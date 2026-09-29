@@ -1,0 +1,23 @@
+<section>
+  <h2>Minhas Redes Sociais</h2>
+
+  <ul>
+    <li><a [href]="githubUrl" target="_blank">Meu GitHub</a></li>
+    <li><a [href]="linkedinUrl" target="_blank">Meu LinkedIn</a></li>
+    <li><a [href]="youtubeUrl" target="_blank">Meu YouTube</a></li>
+    <li><a [href]="instagramUrl" target="_blank">Meu Instagram</a></li>
+  </ul>
+
+  <!-- Resumo compacto de estatísticas -->
+  <div style="margin-top: 25px; padding: 12px; background-color: rgba(255, 255, 255, 0.4); border-radius: 8px; text-align: center;">
+    <p style="margin: 4px 0; font-weight: bold; font-size: 14px; color: #333;">
+      Total de Acessos: <span style="color: #2b5278;">{{ totalAcessos }}</span>
+    </p>
+    <p style="margin: 4px 0; font-size: 12px; color: #666;">
+      Último acesso: {{ ultimaAtualizacao }}
+    </p>
+  </div>
+
+  <hr />
+  <a routerLink="/" class="btn-voltar">Página Inicial</a>
+</section>

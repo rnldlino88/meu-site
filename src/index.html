@@ -1,13 +1,31 @@
+<!-- Declara o tipo do documento como HTML5 -->
 <!doctype html>
-<html lang="en">
+
+<!-- Elemento raiz da página; lang="en" informa ao navegador o idioma do conteúdo -->
+<html lang="pt-BR">
 <head>
+  <!-- Define a codificação de caracteres como UTF-8 (suporta acentos e caracteres especiais) -->
   <meta charset="utf-8">
-  <title>MeuSite</title>
+
+  <!-- Título exibido na aba do navegador -->
+  <title>Primeiro Site</title>
+
+  <!-- Define a URL base para todos os links relativos da aplicação.
+       A "/" garante que o roteador Angular funcione corretamente em qualquer rota -->
   <base href="/">
+
+  <!-- Configura o viewport para tornar o layout responsivo em dispositivos móveis:
+       width=device-width → a largura da página segue a largura da tela
+       initial-scale=1    → sem zoom inicial -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Define o ícone exibido na aba do navegador (favicon) -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+  <!-- Ponto de entrada da aplicação Angular.
+       O Angular substitui esta tag pelo conteúdo do AppComponent (app.component.html)
+       em tempo de execução, de acordo com o selector 'app-root' -->
   <app-root></app-root>
 </body>
 </html>

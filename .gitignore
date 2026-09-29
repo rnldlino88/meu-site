@@ -1,5 +1,10 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# Ignorar arquivos temporários do Python
+__pycache__/
+*.pyc
 
+# Ignorar arquivo de banco de dados local
+backend/usuarios.json
 # Compiled output
 /dist
 /tmp

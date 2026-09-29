@@ -1,0 +1,23 @@
+<section>
+  <a [href]="instagramUrl" target="_blank" rel="noopener noreferrer">
+    <img src="perfil.png" alt="Foto" class="profile-img" />
+  </a>
+  <form (ngSubmit)="submit()">
+    <div class="input-container">
+      <label for="nomeInput">Digite seu nome:</label>
+      <input
+        id="nomeInput"
+        type="text"
+        name="name"
+        [(ngModel)]="name"
+        placeholder="Nome..."
+      />
+    </div>
+
+    @if (name) {
+      <h2>Seja bem-vindo, {{ name }}!</h2>
+    }
+
+    <button type="submit">{{ idButton }}</button>
+  </form>
+</section>
