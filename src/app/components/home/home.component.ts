@@ -2,36 +2,31 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
-
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
-  selector: 'app-home', // Nome da tag HTML personalizada criada para este site componente.
+  selector: 'app-home',
   standalone: true,
-  imports: [FormsModule], // Insere dependências (outros componentes, diretivas como NgIf ou módulos) que utilizar dentro do home.component.html
+  imports: [FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-// sempre devo alterar o tipo de variável: string, booleano ou número
-// ficar atento à nomenclatura da variável se é número: colocar meuNumber como está abaixo.
 export class HomeComponent {
-  // Tipagem implícita (o TypeScript descobre sozinho que é string)
   name = "";
   idButton = "Acessar perfil";
-  instagramUrl = "https//:instagram.com"
-  
-  //2. Injetando o HttpClient e o Router no construtor
-  constructor(private http: HttpClient, private router: Router) {}
+  instagramUrl = "https://instagram.com/rnldlino";
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    public themeService: ThemeService
+  ) {}
 
   submit(): void {
     if (this.name.trim() !== '') {
-      //3. Fazer a requisição POST para a API FastAPI em Python
       this.http.post<any>('http://127.0.0.1:8000/api/saudacao', { nome: this.name }).subscribe({
         next: (resposta) => {
-          //exibe a mensagem que veio diretamente do servidor Python
           alert(resposta.mensagem);
-
-          //Redireciona para a página de perfil
           this.router.navigate(['perfil']);
         },
         error: (erro) => {
@@ -40,7 +35,7 @@ export class HomeComponent {
         }
       });
     } else {
-      alert('Por favor, digite o seu nome antes de continuar!')
+      alert('Por favor, digite o seu nome antes de continuar!');
     }
   }
 }

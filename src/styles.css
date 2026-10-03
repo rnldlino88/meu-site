@@ -3,15 +3,96 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
 body {
-    font-family: 'Serge UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ── Temas globais no <body> ── */
+body.light-theme {
+    background-color: #f4f7f6;
+    color: #212529;
+}
+
+body.dark-theme {
+    background-color: #0f0f1a;
+    color: #e0e0e0;
+}
+
+/* ── Botão de tema fixo ── */
+.btn-theme {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 1000;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.2s, color 0.2s;
+    background-color: #ffffff;
+    color: #1a1a2e;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .btn-theme {
+    background-color: #2d2d44;
+    color: #ffffff;
+}
+
+.btn-theme:hover {
+    opacity: 0.85;
+}
+
+/* ════════════════════════════════════════
+   Dark theme — perfil
+════════════════════════════════════════ */
+body.dark-theme .container {
+    background-color: #1a1a2e;
+}
+
+body.dark-theme hr {
+    border-top-color: #333355;
+}
+
+body.dark-theme .card-exp {
+    background-color: rgba(161, 0, 255, 0.12);
+}
+
+body.dark-theme .card-stat {
+    background-color: #2d2d44;
+}
+
+body.dark-theme ul li a {
+    background-color: #2a2a3e;
+    color: #e0e0e0;
+    border-color: #444466;
+}
+
+/* ════════════════════════════════════════
+   Dark theme — home
+════════════════════════════════════════ */
+body.dark-theme section {
+    background-color: #1a1a2e;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme .input-container input {
+    background-color: #2a2a3e;
+    color: #e0e0e0;
+    border-color: #444466;
+}
+
+body.dark-theme button[type="submit"] {
+    background-color: #2a2a3e;
+    color: #e0e0e0;
+    border-color: #444466;
 }

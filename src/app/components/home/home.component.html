@@ -1,3 +1,7 @@
+<button class="btn-theme" (click)="themeService.toggle()">
+  {{ themeService.isDarkMode ? '☀️ Modo Claro' : '🌙 Modo Escuro' }}
+</button>
+
 <section>
   <a [href]="instagramUrl" target="_blank" rel="noopener noreferrer">
     <img src="perfil.png" alt="Foto" class="profile-img" />

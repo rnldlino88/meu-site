@@ -1,16 +1,7 @@
-// Importa o decorator @Component, que transforma esta classe em um componente Angular
-import { Component } from '@angular/core';
-
-// Importa RouterOutlet, diretiva responsável por renderizar o componente
-// correspondente à rota ativa no template HTML
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
+import { ThemeService } from './services/theme.service';
 
-// @Component define os metadados do componente:
-//   selector     → nome da tag HTML que representa este componente (<app-root>)
-//   imports      → lista de dependências usadas no template (aqui, o RouterOutlet)
-//   templateUrl  → caminho para o arquivo HTML do componente
-//   styleUrl     → caminho para o arquivo CSS exclusivo deste componente
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,7 +9,12 @@ import { HomeComponent } from './components/home/home.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  // Propriedade pública que armazena o nome da aplicação
+export class AppComponent implements OnInit {
   title = 'meu-site';
+
+  constructor(private themeService: ThemeService) {}
+
+  ngOnInit(): void {
+    this.themeService.init();
+  }
 }

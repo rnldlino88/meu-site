@@ -5,6 +5,7 @@ from typing import Any
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from typing import Optional
 
 app = FastAPI()
 
@@ -25,7 +26,17 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 NOME_ARQUIVO = os.path.join(BASE_DIR, "usuarios.json")
 
 class Usuario(BaseModel):
-    nome: str
+    nome: Optional[str] = None
+    email: Optional[str] = None
+
+@app.post("/api/cadastrar-email")
+def cadastrar_email(usuario: Usuario):
+    registro = {
+        "email": usuario.email,
+        "data_cadastro": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
+    salvar_no_json(registro)
+    return {"mensagem": "E-mail salvo com sucesso!", "sucesso": True}
 
 def salvar_no_json(novo_usuario: dict) -> None:
     dados = []

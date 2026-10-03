@@ -1,23 +1,125 @@
-<section>
-  <h2>Minhas Redes Sociais</h2>
+<button class="btn-theme" (click)="themeService.toggle()">
+  {{ themeService.isDarkMode ? "☀️ Modo Claro" : "🌙 Modo Escuro" }}
+</button>
 
+<div class="container">
+  <h2>{{ name }}</h2>
+
+  <!-- Bloco de Experiência Profissional -->
+  <div class="card-exp">
+    <h3 class="exp-title">Assistente de TI (PCD)</h3>
+    <p class="exp-company">Accenture Brasil</p>
+    <p class="exp-desc">
+      Atuação no suporte e sustentação de infraestrutura e sistemas de Tecnologia da Informação,
+      garantindo o correto funcionamento das rotinas tecnológicas e auxiliando
+      no atendimento a chamados e demandas operacionais.
+    </p>
+  </div>
+
+  <h3>Minhas Redes Sociais</h3>
   <ul>
     <li><a [href]="githubUrl" target="_blank">Meu GitHub</a></li>
-    <li><a [href]="linkedinUrl" target="_blank">Meu LinkedIn</a></li>
+    <li><a [href]="linkedinUrl" target="_blank">Meu Linkedin</a></li>
     <li><a [href]="youtubeUrl" target="_blank">Meu YouTube</a></li>
     <li><a [href]="instagramUrl" target="_blank">Meu Instagram</a></li>
   </ul>
 
-  <!-- Resumo compacto de estatísticas -->
-  <div style="margin-top: 25px; padding: 12px; background-color: rgba(255, 255, 255, 0.4); border-radius: 8px; text-align: center;">
-    <p style="margin: 4px 0; font-weight: bold; font-size: 14px; color: #333;">
-      Total de Acessos: <span style="color: #2b5278;">{{ totalAcessos }}</span>
+  <!-- Resumo de acessos da API Python -->
+  <div class="card-stat">
+    <p class="stat-total">
+      Total de Acessos: <span class="stat-value">{{ totalAcessos }}</span>
     </p>
-    <p style="margin: 4px 0; font-size: 12px; color: #666;">
-      Último acesso: {{ ultimaAtualizacao }}
-    </p>
+    <p class="stat-date">Último acesso: {{ ultimaAtualizacao }}</p>
   </div>
 
-  <hr />
-  <a routerLink="/" class="btn-voltar">Página Inicial</a>
-</section>
+  <hr style="margin-top: 20px" />
+  <a href="#" (click)="solicitarEmailRedirecionar($event)" class="btn-voltar"
+    >Página Inicial</a
+  >
+</div>
+
+<!-- Modal / Caixa de E-mail (Aparece ao clicar em Página Inicial) -->
+@if (exibirModalEmail) {
+  <div
+    style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    "
+  >
+    <div
+      style="
+        background: white;
+        color: #333;
+        padding: 25px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 350px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      "
+    >
+      <h3 style="margin-top: 0">Antes de ir...</h3>
+      <p style="font-size: 13px; color: #666">
+        Deixe seu e-mail para receber novidades sobre novos projetos:
+      </p>
+
+      <input
+        type="email"
+        [(ngModel)]="emailUsuario"
+        placeholder="seu@email.com"
+        style="
+          width: 100%;
+          padding: 8px;
+          margin: 10px 0;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        "
+      />
+
+      <div
+        style="
+          margin-top: 15px;
+          display: flex;
+          gap: 10px;
+          justify-content: center;
+        "
+      >
+        <button
+          (click)="confirmarEnvioEmail()"
+          style="
+            background-color: #a100ff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+          "
+        >
+          Enviar e Sair
+        </button>
+        <button
+          (click)="fecharEMudarDePagina()"
+          style="
+            background-color: #ccc;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+          "
+        >
+          Pular
+        </button>
+      </div>
+    </div>
+  </div>
+}
